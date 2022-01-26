@@ -1,7 +1,13 @@
 function hasTargetSum(array, target) {
-  // Write your algorithm here
+  const seenNumbers = {};
+  for (const number of array) {
+    const complement = target - number;
+    if (seenNumbers[complement]) return true;
+    seenNumbers[number] = true;
+  }
+  // if we reach the end of the array, return false
+  return false;
 }
-
 /* 
   Write the Big O time complexity of your function here
 */
@@ -29,6 +35,7 @@ if (require.main === module) {
 
   console.log("Expecting: false");
   console.log("=>", hasTargetSum([1, 2, 5], 4));
+  
 }
 
 module.exports = hasTargetSum;
